@@ -4,7 +4,7 @@ using System.Linq;
 using Common;
 using Microsoft.Data.Sqlite;
 
-namespace ConsoleSearch
+namespace SearchAPI.Controllers
 {
     public class Database
     {
@@ -44,7 +44,7 @@ namespace ConsoleSearch
                     var docId = reader.GetInt32(0);
                     var count = reader.GetInt32(1);
                    
-                    res.Add(new KeyValuePair<int, int>(docId, count));
+                    res.Add(new KeyValuePair<int, int>((int)docId, (int)count));
                 }
             }
 
@@ -89,7 +89,7 @@ ORDER BY COUNT(docId) DESC;
                     var id = reader.GetInt32(0);
                     var w = reader.GetString(1);
                     
-                    res.Add(w, id);
+                    res.Add(w, (int)id);
                 }
             }
             return res;
